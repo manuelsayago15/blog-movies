@@ -11,11 +11,6 @@
 |
 */
 
-Route::get('/','FrontController@index');
-Route::get('contacto','FrontController@contacto');
-Route::get('reviews','FrontController@reviews');
-
-
 Route::get('controlador','PruebaController@index');
 Route::get('name/{nombre}','PruebaController@nombre');
 Route::resource('movie','MovieController');
@@ -48,3 +43,9 @@ Route::get('edad/{edad}', function($edad){
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+/* ***************************************************************** */
+Route::get('/','FrontController@index');
+Route::get('contacto','FrontController@contacto');
+Route::get('reviews','FrontController@reviews');

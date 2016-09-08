@@ -26,4 +26,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    //Esta función es para conservar el password al momento de editar un usuario. El Hash:make es para que podamos encriptar dicho password y le pasamos el $valor
+    public function setPasswordAttribute($valor){
+        if (!empty($valor)) {
+            $this->attributes['password'] = \Hash::make($valor);
+        }
+    }
 }

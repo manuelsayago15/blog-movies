@@ -14,7 +14,8 @@ class UsuarioController extends Controller
     * @return Response
     */
     public function index(){
-    	
+        $users = \Cinema\User::All();
+        return view('usuario.index', compact('users'));    	
     }
 
     /**
@@ -32,8 +33,14 @@ class UsuarioController extends Controller
     *
     * @return Response
     */
-    public function store(){
-    	//
+    public function store(Request $request){
+        \Cinema\User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => bcrypt($request['password']),
+        ]);
+
+        return redirect('usuario')->with('message','store');
     }
 
     /**
